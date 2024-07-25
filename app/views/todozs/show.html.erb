@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @todoz %>
+
+<div>
+  <%= link_to "Edit this todoz", edit_todoz_path(@todoz) %> |
+  <%= link_to "Back to todozs", todozs_path %>
+
+  <%= button_to "Destroy this todoz", @todoz, method: :delete %>
+</div>
