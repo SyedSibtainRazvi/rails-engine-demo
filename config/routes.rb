@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :todozs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # 
   mount BlogEngine::Engine => "/blog_engine"
