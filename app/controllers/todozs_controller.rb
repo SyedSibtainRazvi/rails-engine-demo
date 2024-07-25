@@ -50,6 +50,13 @@ class TodozsController < ApplicationController
   # DELETE /todozs/1 or /todozs/1.json
   def destroy
     @todoz.destroy!
+    
+    ActiveSupport::Notifications.instrument("todoz.destroy") do |payload|
+      payload[:todoz_id] = @todoz.id
+      payload[:todoz_name] = @todoz.name
+      Rails.logger.info "Sending notification: todoz.destroy with payload: #{payload.inspect}"
+    end
+    
 
     respond_to do |format|
       format.html { redirect_to todozs_url, notice: "Todoz was successfully destroyed." }
